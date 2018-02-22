@@ -16,28 +16,27 @@ router.get('/', function(req, res, next) {
 
 /* POST new attendee */
 router.post('/new', function(req, res, next) {
-  var email = req.body.email;
-  if (!email) {
-    var err = new Error('No email specified');
-    err.status = 400;
-    next(err);
-  } else {
-    sql.query('SELECT * FROM attendees WHERE email = ?', [email], function(err, data) {
-      data = JSON.parse(JSON.stringify(data));
-      if (data.length>0) {
-        var err = new Error('Email already in use');
-        err.satus = 400;
-        next(err);
-      } else {
-        sql.query('INSERT INTO attendees (email) VALUES (?)', [email], function(err1, data2) {
-        if (err1) throw err1;
-          res.json({
-            success: true
-          });
-        });
-      }
-    });
-  }
+  sql.query('INSERT INTO attendees (email) VALUES (?)', [req.body.email || null], function(err, data) {
+    switch(err ? err.errno : -1) {
+      case 1062:
+      var err = new Error('Email already in use');
+      err.satus = 400;
+      next(err);
+      break;
+      case 1048:
+      var err = new Error('No email specified');
+      err.satus = 400;
+      next(err);
+      break;
+      case -1:
+      res.json({
+        success: true
+      });
+      break;
+      default:
+      next(err);
+    }
+  });
 });
 
 module.exports = router;
