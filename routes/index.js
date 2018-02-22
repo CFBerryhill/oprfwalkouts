@@ -44,4 +44,21 @@ router.post('/new', function(req, res, next) {
   });
 });
 
+/* GET attendees */
+router.get('/all', function(req, res, next) {
+  if(req.app.get('env') === 'development') sql.query('SELECT email FROM attendees', function(err, data) {
+    switch(err ? err.errno : -1) {
+      case -1:
+      data = JSON.parse(JSON.stringify(data));
+      res.json(data.map(function(e) {
+        return e.email;
+      }));
+      break;
+      default:
+      next(err);
+    }
+  });
+  else next();
+});
+
 module.exports = router;
