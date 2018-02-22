@@ -4,14 +4,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  total = -1;
   sql.query('SELECT DISTINCT COUNT(email) AS total FROM attendees', function(err, data) {
     if (err) throw err;
     data = JSON.parse(JSON.stringify(data));
-    total = data[0].total;
-  });
-  res.render('index', {
-    attendees: total
+    var total = data[0].total;
+    res.render('index', {
+      attendees: total
+    });
   });
 });
 
