@@ -27,7 +27,7 @@ NODE_ENV = 'yourProductionEnvironment'
 * NODE_ENV: development or production
 
 #### The .htaccess file
-Create a new file named .htaccess in your public_html directory and paste in the following. Replace XXXXX with the port number specified in your .env file.
+Create a new file named .htaccess in your public_html directory and paste in the following. Replace ```XXXXX``` with the port number specified in your .env file.
 ```apache
 RewriteEngine On
 RewriteRule ^$ http://127.0.0.1:XXXXX/ [P,L]
