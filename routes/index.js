@@ -39,7 +39,7 @@ router.post('/new', function(req, res, next) {
       });
       break;
       default:
-
+      next(err);
     }
   });
 });
