@@ -30,7 +30,7 @@ NODE_ENV = 'yourProductionEnvironment'
 Create a new file named .htaccess in your public_html directory and paste in the following. Replace XXXXX with the port number specified in your .env file.
 ```apache
 RewriteEngine On
-RewriteRule ^$ http://127.0.0.1:**XXXXX**/ [P,L]
+RewriteRule ^$ http://127.0.0.1:XXXXX/ [P,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ http://127.0.0.1:XXXXX/$1 [P,L]
