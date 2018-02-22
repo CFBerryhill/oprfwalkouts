@@ -1,22 +1,22 @@
 # OPRF Walkout
 
-##Setup
+## Setup
 
-###Dependencies
+### Dependencies
 
 
-###The .env file
+### The .env file
 
-###The .htaccess file
+### The .htaccess file
 
-###Launching the site
+### Launching the site
 ```bash
 mysql -u root -p < reset.sql
 npm i
 nohup npm start &
 ```
 
-###Closing the site
+### Closing the site
 ```bash
 pkill node
 ```
