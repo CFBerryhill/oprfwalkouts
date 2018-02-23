@@ -38,14 +38,6 @@ RewriteRule ^(.*)$ http://127.0.0.1:XXXXX/$1 [P,L]
 
 #### Launching the site
 Run the following commands to launch the site
-###### First Launch
-```bash
-mysql -u root -p < reset.sql
-npm i
-nohup npm start &
-```
-
-###### Restarting
 ```bash
 npm i
 nohup npm start &
@@ -57,6 +49,12 @@ Run the following command to close the site
 pkill node
 ```
 *This will close **ALL** node applications*
+
+#### Initializing or resetting the database
+Run the following command to initialize or reset the database.
+```bash
+npm run reset
+```
 
 ## The site
 
