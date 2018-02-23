@@ -19,7 +19,7 @@ PORT = 'applicationPort'
 NODE_ENV = 'yourProductionEnvironment'
 ```
 ###### The variables
-* DB_HOST: the webserver address to your mySQL database
+* DB_HOST: the web-server address to your mySQL database
  * Use 'localhost' if your database is hosted on your server
 * DB_USER: the username for your mySQL account
 * DB_PASS: the password for your mySQL account
